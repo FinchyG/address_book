@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Address Book</title>
+    <style>
+    body {
+        font-family: sans-serif;
+    }
+    div {
+        width: 30%;
+        margin: 1em auto;
+        padding: 0.2em;
+    }
+    table {
+        width: 100%;
+    }
+    th, td {
+        width: 50%;
+        height: 4em;
+        text-align: left;
+        vertical-align: top;
+        border-radius: 0.5em;
+    }
+    th {
+        background-color: rgb(180, 202, 237);
+    }
+    td {
+        background-color: rgb(230, 237, 194);
+    }
+    #address {
+        height: 6em;
+    }
+    #top_div{
+        width:95%;
+    }
+    input {
+        display: block;
+        width: 80%;
+        margin: 0.5em auto;
+        padding: 0.5em;
+        border-radius: 0.5em;
+    }
+    button {
+        display: block;
+        width: 60%;
+        margin: 0.5em auto;
+        padding: 0.5em;
+        border-radius: 0.5em;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="top_div">
+            <input type="text" id="search" placeholder="Search company name..." />
+            <button id="get_address">Get Address</button>
+        </div>
+        <table>
+            <tr>
+                <th>Company: </th>
+                <td id="name"></td>
+            </tr>
+            <tr>
+                <th>Address: </th>
+                <td id="address"></td>
+            </tr>
+            <tr>
+                <th>Email: </th>
+                <td id="email"></td>
+            </tr>
+            <tr>
+                <th>Phone: </th>
+                <td id="phone"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+var addresses = [
+    ["Bob's Builders",
+     "1 Roofer Close, Brick Town, B10 1AN",
+     "office@bobsbuilders.co.uk",
+     "01234 567890"],
+    ["Thomas Trains Ltd",
+     "Signalling House, 12 Track Street, Station City, SC1 9TY",
+     "info@thomastrains.com",
+     "01987 654321"]
+];
+
+document.getElementById("get_address").addEventListener("click", function(){
+
+    var search = document.getElementById("search").value.toLowerCase();
+    
+    for(var i = 0; i <= addresses.length; i++){
+        if(addresses[i][0].toLocaleLowerCase().includes(search)) {
+            
+            document.getElementById("name").innerHTML = addresses[i][0];
+            document.getElementById("address").innerHTML = addresses[i][1].split(",").join("<br />");
+            document.getElementById("email").innerHTML = addresses[i][2];
+            document.getElementById("phone").innerHTML = addresses[i][3];
+        
+        }
+
+    }
+
+});
+</script>
+</html>
